@@ -1,7 +1,9 @@
-from fastapi import APIRouter
-
-from api import get_ip
-
+from fastapi import APIRouter, Request
 
 api_router = APIRouter()
-api_router.include_router(get_ip.router, prefix="/get_ip", tags=["get_ip"])
+
+
+@api_router.get("/")
+def read_ip(request: Request):
+    ip = request.client.host
+    return {"ipv4": ip}
