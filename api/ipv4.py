@@ -42,11 +42,11 @@ def traceroute(hostname: str, request: Request):
     if result.returncode == 0:
         return {
             "success": True,
-            "message": "Ping successfully.",
+            "message": "Traceroute successfully.",
             "data": {"ipv4": ip, "result": result.stdout.split("\n")},
         }
     return {
         "success": False,
-        "message": "Ping Failed.",
+        "message": "Traceroute Failed.",
         "data": {"ipv4": ip, "result": ""},
     }

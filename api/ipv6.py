@@ -7,7 +7,7 @@ router = APIRouter()
 @router.get("/")
 def read_ip(request: Request):
     ip = request.client.host
-    return {"ipv6": ip}
+    return {"ip": ip}
 
 
 @router.get("/ping")
@@ -17,8 +17,16 @@ def ping(hostname: str, request: Request):
         ["ping", hostname, "-6", "-c4"], stdout=subprocess.PIPE, universal_newlines=True
     )
     if result.returncode == 0:
-        return {"ipv6": ip, "result": result.stdout}
-    return {"ipv6": ip, "result": ""}
+        return {
+            "success": True,
+            "message": "Ping successfully.",
+            "data": {"ip": ip, "result": result.stdout.split("\n")},
+        }
+    return {
+        "success": False,
+        "message": "Ping Failed.",
+        "data": {"ip": ip, "result": ""},
+    }
 
 
 @router.get("/traceroute")
@@ -30,5 +38,13 @@ def traceroute(hostname: str, request: Request):
         universal_newlines=True,
     )
     if result.returncode == 0:
-        return {"ipv6": ip, "result": result.stdout}
-    return {"ipv6": ip, "result": ""}
+        return {
+            "success": True,
+            "message": "Traceroute successfully.",
+            "data": {"ip": ip, "result": result.stdout.split("\n")},
+        }
+    return {
+        "success": False,
+        "message": "Traceroute Failed.",
+        "data": {"ip": ip, "result": ""},
+    }
