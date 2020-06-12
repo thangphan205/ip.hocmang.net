@@ -145,35 +145,29 @@ const Index: React.FC<BasicListProps> = (props) => {
               </Form.Item>
             </Col>
           </Row>
-          {
-            data_pingv4.data && data_pingv4.data.result.length > 0 ? (
-              <Row>
-                <Col md={20}>
-                  <Form.Item
-                    label="Ping Result"
-                  >
-                    {
-                      loading_pingv4 ? (
-                        <Spin spinning={loading_pingv4}>
-                          <Alert
-                            message="System processing..."
-                            description={"I'm pinging 4 packets. :)"}
-                            type="info"
-
-                          />
-                        </Spin>
-                      ) : (data_pingv4.data && data_pingv4.data.result.length > 0 ? (
-                        <Space direction="vertical" >
-                          {renderPingv4.map((item) => item)}
-                        </Space>
-                      ) : null)
-                    }
-                  </Form.Item>
-                </Col>
-              </Row>
-            ) : null
-          }
-
+          <Row>
+            <Col md={20}>
+              <Form.Item
+                label="Ping Result"
+              >
+                {
+                  loading_pingv4 ? (
+                    <Spin spinning={loading_pingv4}>
+                      <Alert
+                        message="System processing..."
+                        description={"I'm pinging 4 packets. :)"}
+                        type="info"
+                      />
+                    </Spin>
+                  ) : (data_pingv4.data && data_pingv4.data.result.length > 0 ? (
+                    <Space direction="vertical" >
+                      {renderPingv4.map((item) => item)}
+                    </Space>
+                  ) : null)
+                }
+              </Form.Item>
+            </Col>
+          </Row>
         </Form>
 
         <Form
@@ -189,9 +183,7 @@ const Index: React.FC<BasicListProps> = (props) => {
               <Form.Item
                 label="Hostname or IP Address"
                 name="hostname_traceroutev4"
-              // rules={[{ required: true, message: 'Please input hostname or IP Address!' }]}
               >
-                {/* <Input /> */}
                 <AutoComplete
                   style={{ width: '100%' }}
                   options={options}
@@ -210,33 +202,28 @@ const Index: React.FC<BasicListProps> = (props) => {
               </Form.Item>
             </Col>
           </Row>
-          {
-            data_traceroutev4.data && data_traceroutev4.data.result.length > 0 ? (
-              <Row>
-                <Col md={20}>
-                  <Form.Item
-                    label="Result"
-                  >
-                    {
-                      loading_traceroutev4 ? (
-                        <Spin spinning={loading_traceroutev4}>
-                          <Alert
-                            message="System processing..."
-                            type="info"
-                          />
-                        </Spin>
-                      ) : (data_traceroutev4.data && data_traceroutev4.data.result.length > 0 ? (
-                        <Space direction="vertical" >
-                          {renderTraceoutev4.map((item) => item)}
-                        </Space>
-                      ) : null)
-                    }
-                  </Form.Item>
-                </Col>
-              </Row>
-            ) : null
-          }
-
+          <Row>
+            <Col md={20}>
+              <Form.Item
+                label="Result"
+              >
+                {
+                  loading_traceroutev4 ? (
+                    <Spin spinning={loading_traceroutev4}>
+                      <Alert
+                        message="System processing..."
+                        type="info"
+                      />
+                    </Spin>
+                  ) : (data_traceroutev4.data && data_traceroutev4.data.result.length > 0 ? (
+                    <Space direction="vertical" >
+                      {renderTraceoutev4.map((item) => item)}
+                    </Space>
+                  ) : null)
+                }
+              </Form.Item>
+            </Col>
+          </Row>
         </Form>
       </Card>
     </div>
