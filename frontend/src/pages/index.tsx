@@ -205,7 +205,7 @@ const Index: React.FC<BasicListProps> = (props) => {
           <Row>
             <Col md={20}>
               <Form.Item
-                label="Result"
+                label="Traceroute Result"
               >
                 {
                   loading_traceroutev4 ? (
