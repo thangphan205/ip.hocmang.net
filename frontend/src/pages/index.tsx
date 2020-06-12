@@ -120,7 +120,8 @@ const Index: React.FC<BasicListProps> = (props) => {
   };
   let renderPingv4 = [];
   let renderTraceoutev4 = [];
-
+  let renderPingv6 = [];
+  let renderTraceoutev6 = [];
   if (data_pingv4.data) {
     renderPingv4 = data_pingv4.data.result.map((item, index) => {
       return <Text key={index}>{item}</Text>
@@ -131,7 +132,16 @@ const Index: React.FC<BasicListProps> = (props) => {
       return <Text key={index}>{item}</Text>
     })
   }
-
+  if (data_pingv6.data) {
+    renderPingv6 = data_pingv6.data.result.map((item, index) => {
+      return <Text key={index}>{item}</Text>
+    })
+  }
+  if (data_traceroutev6.data) {
+    renderTraceoutev6 = data_traceroutev6.data.result.map((item, index) => {
+      return <Text key={index}>{item}</Text>
+    })
+  }
   const options = [
     { value: '1.1.1.1' },
     { value: '8.8.8.8' },
@@ -198,8 +208,8 @@ const Index: React.FC<BasicListProps> = (props) => {
                 label="IPv6 Ping Result"
               >
                 {
-                  loading_pingv4 ? (
-                    <Spin spinning={loading_pingv4}>
+                  loading_pingv6 ? (
+                    <Spin spinning={loading_pingv6}>
                       <Alert
                         message="System processing..."
                         description={"I'm pinging 4 packets. :)"}
@@ -208,7 +218,7 @@ const Index: React.FC<BasicListProps> = (props) => {
                     </Spin>
                   ) : (data_pingv6.data && data_pingv6.data.result.length > 0 ? (
                     <Space direction="vertical" >
-                      {renderPingv4.map((item) => item)}
+                      {renderPingv6.map((item) => item)}
                     </Space>
                   ) : null)
                 }
@@ -264,7 +274,7 @@ const Index: React.FC<BasicListProps> = (props) => {
                     </Spin>
                   ) : (data_traceroutev6.data && data_traceroutev6.data.result.length > 0 ? (
                     <Space direction="vertical" >
-                      {renderTraceoutev4.map((item) => item)}
+                      {renderTraceoutev6.map((item) => item)}
                     </Space>
                   ) : null)
                 }
