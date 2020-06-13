@@ -10,7 +10,7 @@ def read_ip(request: Request):
     return {
         "success": True,
         "message": "Get IP Public successfully.",
-        "data": {"ipv4": ip,},
+        "data": {"ip": ip,},
     }
 
 

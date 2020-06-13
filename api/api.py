@@ -10,11 +10,12 @@ api_router.include_router(ipv6.router, prefix="/ipv6", tags=["ipv6"])
 @api_router.get("/")
 def read_ip(request: Request):
     ip = request.client.host
-    return {
-        "success": True,
-        "message": "Get IP Public successfully.",
-        "data": {"ip": ip,},
-    }
+    # return {
+    #     "success": True,
+    #     "message": "Get IP Public successfully.",
+    #     "data": {"ip": ip,},
+    # }
+    return {"ip": ip}
 
 
 @api_router.get("/ping")
