@@ -54,12 +54,10 @@ const Index: React.FC<BasicListProps> = (props) => {
 
 
   const onFinish = values => {
-    console.log('Success:', values);
+
     const params = {
       hostname: values.hostname_pingv4,
     }
-    console.log(params);
-
     dispatch({
       type: 'pingv4/fetch',
       payload: params,
@@ -67,11 +65,10 @@ const Index: React.FC<BasicListProps> = (props) => {
   };
 
   const onFinishV6 = values => {
-    console.log('Success:', values);
+
     const params = {
       hostname: values.hostname_pingv6,
     }
-    console.log(params);
 
     dispatch({
       type: 'pingv6/fetch',
@@ -80,7 +77,7 @@ const Index: React.FC<BasicListProps> = (props) => {
   };
 
   const handleTracerouteV4 = values => {
-    console.log('Success:', values);
+
     const params = {
       hostname: values.hostname_traceroutev4
     }
@@ -90,7 +87,7 @@ const Index: React.FC<BasicListProps> = (props) => {
     });
   };
   const handleTracerouteV6 = values => {
-    console.log('Success:', values);
+
     const params = {
       hostname: values.hostname_traceroutev6
     }
@@ -160,12 +157,18 @@ const Index: React.FC<BasicListProps> = (props) => {
         <Row>
           <Col md={6}></Col>
           <Col md={12} >
-            <Title copyable>Your IP Address: {data_ipv4.ipv4}</Title>
-            <Text>You access <a>http://ip.hocmang.net</a> by IP Address: {data_ipv4.ipv4}</Text>
+            <Title copyable>Your IP Address: {data_ipv4.ip}</Title>
+            <Text>You access <a>http://ip.hocmang.net</a> by IP Address: {data_ipv4.ip}</Text>
           </Col>
           <Col md={6}></Col>
         </Row>
-
+        <Row>
+          <Col md={6}></Col>
+          <Col md={12} >
+            <Title level={4} copyable={{ text: 'curl http://ip.hocmang.net/api/' }}>API: curl http://ip.hocmang.net/api/</Title>
+          </Col>
+          <Col md={6}></Col>
+        </Row>
       </Card>
       <Card title={"Check IPv6:"} >
         <Form
