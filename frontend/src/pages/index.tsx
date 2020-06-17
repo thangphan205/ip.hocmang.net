@@ -26,7 +26,6 @@ interface BasicListProps {
   loading_traceroutev6: boolean;
 }
 
-// const Index = ({ dispatch, ipv4: { data_ipv4, data_pingv4, loading } }) => {
 const Index: React.FC<BasicListProps> = (props) => {
   const {
     loading,
@@ -155,25 +154,24 @@ const Index: React.FC<BasicListProps> = (props) => {
     { value: 'google.com' },
     { value: 'facebook.com' },
   ];
+  const styleCenter = {
+    textAlign: "center",
+  }
   return (
     <div>
-      <Card>
-        <Row>
-          <Col md={6}></Col>
-          <Col md={12} >
-            <Title copyable>Your IP Address: {data_ipv4.ip}</Title>
-            <Text>You access <a>http://ip.hocmang.net</a> by IP Address: {data_ipv4.ip}</Text>
-          </Col>
-          <Col md={6}></Col>
-        </Row>
-        <Row>
-          <Col md={6}></Col>
-          <Col md={12} >
-            <Title level={4} copyable={{ text: 'curl http://ip.hocmang.net/api/' }}>API: curl http://ip.hocmang.net/api/</Title>
-            <Text><a href="https://github.com/thangphan205/ip.hocmang.net"><GithubOutlined style={{ fontSize: '32px' }} />Source code: https://github.com/thangphan205/ip.hocmang.net</a></Text>
-          </Col>
-          <Col md={6}></Col>
-        </Row>
+      <Card style={styleCenter}>
+        <Typography>
+          <Title level={2} copyable>Your IP Address: {data_ipv4.ip}</Title>
+          <Text >You access <a>http://ip.hocmang.net</a> by IP Address: {data_ipv4.ip}</Text>
+        </Typography>
+        <Typography>
+          <Title level={4} copyable={{ text: 'curl http://ip.hocmang.net/api/' }}>API: curl http://ip.hocmang.net/api/</Title>
+          <Text>
+            <a href="https://github.com/thangphan205/ip.hocmang.net">
+              <GithubOutlined style={{ fontSize: '24px' }} />Source code: https://github.com/thangphan205/ip.hocmang.net
+            </a>
+          </Text>
+        </Typography>
       </Card>
       <Card title={"Check IPv6:"} >
         <Form
@@ -189,13 +187,11 @@ const Index: React.FC<BasicListProps> = (props) => {
               <Form.Item
                 label="Hostname or IP Address"
                 name="hostname_pingv6"
-              // rules={[{ required: true, message: 'Please input hostname or IP Address!' }]}
               >
-                {/* <Input /> */}
                 <AutoComplete
                   style={{ width: '100%' }}
                   options={optionsV6}
-                  placeholder="Choose the suggestion or type the hostname"
+                  placeholder="Choose the suggestion or type your hostname"
                   filterOption={(inputValue, option) =>
                     option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                   }
@@ -252,7 +248,7 @@ const Index: React.FC<BasicListProps> = (props) => {
                 <AutoComplete
                   style={{ width: '100%' }}
                   options={optionsV6}
-                  placeholder="Choose the suggestion or type the hostname"
+                  placeholder="Choose the suggestion or type your hostname"
                   filterOption={(inputValue, option) =>
                     option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                   }
@@ -307,13 +303,11 @@ const Index: React.FC<BasicListProps> = (props) => {
               <Form.Item
                 label="Hostname or IP Address"
                 name="hostname_pingv4"
-              // rules={[{ required: true, message: 'Please input hostname or IP Address!' }]}
               >
-                {/* <Input /> */}
                 <AutoComplete
                   style={{ width: '100%' }}
                   options={options}
-                  placeholder="Choose the suggestion or type the hostname"
+                  placeholder="Choose the suggestion or type your hostname"
                   filterOption={(inputValue, option) =>
                     option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                   }
@@ -370,7 +364,7 @@ const Index: React.FC<BasicListProps> = (props) => {
                 <AutoComplete
                   style={{ width: '100%' }}
                   options={options}
-                  placeholder="Choose the suggestion or type the hostname"
+                  placeholder="Choose the suggestion or type your hostname"
                   filterOption={(inputValue, option) =>
                     option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                   }
@@ -413,10 +407,6 @@ const Index: React.FC<BasicListProps> = (props) => {
   );
 };
 
-// export default connect(({ ipv4, loading }) => ({
-//   ipv4,
-//   loading: loading.models.ipv4,
-// }))(Index);
 
 export default connect(
   ({
